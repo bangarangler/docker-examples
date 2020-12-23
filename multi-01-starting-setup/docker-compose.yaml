@@ -1,0 +1,50 @@
+# docker compose does --rm and -d docker-compose up -d
+version: "3.8"
+services:
+  mongodb:
+    image: 'mongo'
+    volumes:
+      - goals-data:/data/db
+    # environment:
+      # MONGO_INITDB_ROOT_USERNAME: jon
+      # MONGO_INITDB_ROOT_PASSWORD: secret
+      # - MONGO_INITDB_ROOT_USERNAME=jon
+    env_file:
+      - ./env/mongo.env
+    # docker does this out of the box but could add it like below
+    # networks:
+        # - goals-net
+  backend:
+    build: ./backend
+    # alternative method
+    # build:
+    #   context: ./backend
+    #   dockerfile: Dockerfile-dev
+    #   args:
+    #     some-arg: 1
+    ports:
+      - '80:80'
+    volumes:
+      - logs:/app/logs
+      - ./backend:/app
+      - /app/node_modules
+    env_file:
+      - ./env/backend.env
+    depends_on:
+      - mongodb
+  frontend:
+    build: ./frontend
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./frontend/src:/app/src
+    stdin_open: true
+    tty: true
+    depends_on:
+      - backend
+
+# named volumes should be declared like this for use in other services
+# same leve as services with name of volume followed by :
+volumes:
+  goals-data:
+  logs:
