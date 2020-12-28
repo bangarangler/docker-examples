@@ -80,8 +80,11 @@ app.delete("/goals/:id", async (req, res) => {
 // for ECS need to do something similar to this
 // can use localhost as with ECS gives us network connection on localhost
 // set locally to mongodb and on ECS can set it to something else
+// AWSEC2
+//  `mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_URL}:27017/course-goals?authSource=admin`,
+//  ATLAS
 mongoose.connect(
-  `mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_URL}:27017/course-goals?authSource=admin`,
+  `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PW}@docker-example.fmfnf.mongodb.net/${process.env.MONGODB_NAME}?retryWrites=true&w=majority`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
