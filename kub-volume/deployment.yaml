@@ -20,7 +20,9 @@ spec:
               name: story-volume
       volumes:
         - name: story-volume
-          hostPath:
-            path: /data # // kind of like a bind-mount
-            type: DirectoryOrCreate
+          persistentVolumeClaim:
+            claimName: host-pvc
+          # hostPath:
+          #   path: /data # // kind of like a bind-mount still node specific
+          #   type: DirectoryOrCreate
           # emptyDir: {} // great simple option don't work accross replicas
