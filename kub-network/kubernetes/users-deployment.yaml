@@ -17,6 +17,5 @@ spec:
           image: bangarangler/kub-demo-users:latest
           env:
             - name: AUTH_ADDRESS
-              value: localhost
-        - name: auth
-          image: bangarangler/kub-demo-auth:latest
+              value: "10.109.136.79" # could do this or could use dynamic env var
+              # this is being used in signup and dynamically in login
