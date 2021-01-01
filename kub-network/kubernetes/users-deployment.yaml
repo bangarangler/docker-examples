@@ -17,5 +17,6 @@ spec:
           image: bangarangler/kub-demo-users:latest
           env:
             - name: AUTH_ADDRESS
-              value: "10.109.136.79" # could do this or could use dynamic env var
+              # value: "10.109.136.79" # could do this or could use dynamic env var
               # this is being used in signup and dynamically in login
+              value: "auth-service.default" # service name . name space
