@@ -16,4 +16,8 @@ services:
     environment:
       TASKS_FOLDER: tasks
       AUTH_ADDRESS: auth
+  frontend:
+    build: ./frontend
+    ports:
+      - 80:80
 
