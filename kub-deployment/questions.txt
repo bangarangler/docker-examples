@@ -1,0 +1,8 @@
+kops
+how to manage rootKey
+manage .kube config for multiple projects
+ip for mongo opposed to temp allowing everything.
+make sure al of this is remeoved and minikube set up again
+kubernetes deployment on digital ocean
+manual and managed
+ci/cd i.e. jenkins, travis, circle
